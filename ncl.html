@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Cyber League | Strategic Roadmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ncl-blue: #00619c;
+            --ncl-light-blue: #eef7ff;
+            --ncl-dark-navy: #0a1a2f;
+            --ncl-accent-green: #00a651;
+        }
+        body {
+            background-color: #ffffff;
+            color: #334155;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .bg-ncl-blue { background-color: var(--ncl-blue); }
+        .text-ncl-blue { color: var(--ncl-blue); }
+        .border-ncl-blue { border-color: var(--ncl-blue); }
+        .bg-ncl-navy { background-color: var(--ncl-dark-navy); }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #004b8d 0%, #00619c 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        .card-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 97, 156, 0.15);
+            border-color: var(--ncl-blue);
+        }
+        
+        .tab-active {
+            border-bottom: 3px solid var(--ncl-blue);
+            color: var(--ncl-blue);
+            font-weight: 700;
+        }
+        
+        .code-font { font-family: 'Fira Code', monospace; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn { animation: fadeIn 0.4s ease-out forwards; }
+
+        .btn-primary {
+            background-color: var(--ncl-blue);
+            color: white;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #004b8d;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Nav -->
+    <nav class="bg-white p-4 md:p-6 flex justify-between items-center border-b border-gray-100 sticky top-0 z-50 shadow-sm">
+        <div class="flex items-center">
+            <!-- Logo Placeholder -->
+            <img src="logo.png" alt="NCL Logo" class="h-12 w-auto" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div class=\'w-10 h-10 bg-ncl-blue rounded flex items-center justify-center\'><span class=\'text-white font-black text-xs\'>NCL</span></div>');">
+        </div>
+        <div class="hidden lg:flex space-x-8 text-xs uppercase tracking-widest font-bold text-gray-600">
+            <a href="#history" class="hover:text-ncl-blue transition">Origins</a>
+            <a href="#strategy" class="hover:text-ncl-blue transition">2026-2029 Vision</a>
+            <a href="#stats" class="hover:text-ncl-blue transition">Impact</a>
+        </div>
+        <a href="https://cyberskyline.com/events/ncl" target="_blank" class="btn-primary px-6 py-2.5 rounded text-xs font-bold uppercase transition">
+            Join the Season
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white py-24 px-6 text-center">
+        <div class="container mx-auto">
+            <h2 class="text-sky-200 code-font mb-4 tracking-widest uppercase text-sm font-bold">Where Games Get Real</h2>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">
+                Bridging the Gap from <br>
+                <span class="text-white opacity-90">Curriculum to Career</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-blue-100 text-lg mb-12 font-light">
+                The National Cyber League (NCL) is the premier high-fidelity cybersecurity competition for students to validate their skills and connect with industry-leading employers.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="toggleModal('report-modal')" class="bg-white text-ncl-blue px-8 py-4 rounded font-bold hover:bg-blue-50 transition shadow-xl">View Scouting Reports</button>
+                <a href="mailto:finance@nationalcyberleague.org" class="border-2 border-white/40 px-8 py-4 rounded font-bold hover:bg-white/10 transition">Partner With Us</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Interactive Tabs Section -->
+    <section class="container mx-auto px-6 py-16" id="tabs">
+        <div class="flex justify-center border-b border-gray-200 mb-12 overflow-x-auto">
+            <button onclick="switchTab('history')" id="tab-history" class="px-8 py-4 text-sm font-bold uppercase tracking-widest transition tab-active">History</button>
+            <button onclick="switchTab('mission')" id="tab-mission" class="px-8 py-4 text-sm font-bold uppercase tracking-widest transition">Mission & Values</button>
+            <button onclick="switchTab('success')" id="tab-success" class="px-8 py-4 text-sm font-bold uppercase tracking-widest transition">Success Stories</button>
+        </div>
+
+        <div id="content-area" class="min-h-[400px]">
+            <!-- Content Injected via JS -->
+        </div>
+    </section>
+
+    <!-- Strategic Roadmap Section -->
+    <section class="bg-gray-50 py-24 border-t border-gray-200" id="strategy">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-ncl-blue code-font mb-4 tracking-widest uppercase text-sm font-bold">Strategic Roadmap</h2>
+                <h3 class="text-4xl font-black text-gray-900">Vision 2026 - 2029</h3>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Focused on four non-negotiable strategic priorities to secure the future of the cybersecurity workforce.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- HS Outreach -->
+                <div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-ncl-blue">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-blue-50 rounded flex items-center justify-center text-ncl-blue font-bold text-xl">01</div>
+                        <h4 class="text-xl font-bold text-gray-900">High School Outreach</h4>
+                    </div>
+                    <p class="text-gray-500 mb-6 italic text-sm">Goal: Establish NCL as the premier solution for school districts seeking to meet cybersecurity education requirements.</p>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start"><span class="text-ncl-blue mr-2 font-bold">▹</span> Mapping NCL to high school curriculum standards.</li>
+                        <li class="flex items-start"><span class="text-ncl-blue mr-2 font-bold">▹</span> Sustainable partnerships with state education departments.</li>
+                        <li class="flex items-start"><span class="text-ncl-blue mr-2 font-bold">▹</span> Launching regular high school coaches' professional development.</li>
+                    </ul>
+                </div>
+
+                <!-- Industry -->
+                <div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-emerald-500">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-emerald-50 rounded flex items-center justify-center text-emerald-600 font-bold text-xl">02</div>
+                        <h4 class="text-xl font-bold text-gray-900">Industry Engagement</h4>
+                    </div>
+                    <p class="text-gray-500 mb-6 italic text-sm">Goal: Position NCL as the first destination for employers seeking verified cybersecurity talent.</p>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2 font-bold">▹</span> Systematic integration of Scouting Reports into industry hiring.</li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2 font-bold">▹</span> Expanding job listings and career opportunities via partnerships.</li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-2 font-bold">▹</span> Formal industry advisory structure for regular feedback.</li>
+                    </ul>
+                </div>
+
+                <!-- Financial -->
+                <div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-purple-500">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-purple-50 rounded flex items-center justify-center text-purple-600 font-bold text-xl">03</div>
+                        <h4 class="text-xl font-bold text-gray-900">Financial Accessibility</h4>
+                    </div>
+                    <p class="text-gray-500 mb-6 italic text-sm">Goal: Eliminate financial obstacles and create sustainable funding models for long-term accessibility.</p>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start"><span class="text-purple-500 mr-2 font-bold">▹</span> Establishing comprehensive scholarship and assistance programs.</li>
+                        <li class="flex items-start"><span class="text-purple-500 mr-2 font-bold">▹</span> Increasing participation from underrepresented communities.</li>
+                        <li class="flex items-start"><span class="text-purple-500 mr-2 font-bold">▹</span> Pursuing federal, state, and private grants for student access.</li>
+                    </ul>
+                </div>
+
+                <!-- Community -->
+                <div class="bg-white p-8 rounded-xl card-shadow border-t-4 border-orange-500">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-orange-50 rounded flex items-center justify-center text-orange-600 font-bold text-xl">04</div>
+                        <h4 class="text-xl font-bold text-gray-900">Community Building</h4>
+                    </div>
+                    <p class="text-gray-500 mb-6 italic text-sm">Goal: Create vibrant, ongoing communities that support career development and peer learning.</p>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start"><span class="text-orange-500 mr-2 font-bold">▹</span> Thriving alumni network providing mentorship and guidance.</li>
+                        <li class="flex items-start"><span class="text-orange-500 mr-2 font-bold">▹</span> Multi-season engagement pathways with progressive skills.</li>
+                        <li class="flex items-start"><span class="text-orange-500 mr-2 font-bold">▹</span> Regional events to strengthen local cybersecurity ecosystems.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Ticker -->
+    <section class="bg-ncl-navy py-16" id="stats">
+        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-black text-white mb-2">17,000+</div>
+                <div class="text-xs uppercase tracking-widest text-blue-300 font-bold">Annual Players</div>
+            </div>
+            <div>
+                <div class="text-4xl font-black text-white mb-2">500+</div>
+                <div class="text-xs uppercase tracking-widest text-blue-300 font-bold">Institutions</div>
+            </div>
+            <div>
+                <div class="text-4xl font-black text-white mb-2">9</div>
+                <div class="text-xs uppercase tracking-widest text-blue-300 font-bold">NICE Domains</div>
+            </div>
+            <div>
+                <div class="text-4xl font-black text-white mb-2">100%</div>
+                <div class="text-xs uppercase tracking-widest text-blue-300 font-bold">Virtual Access</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competency Domains -->
+    <section class="container mx-auto px-6 py-24">
+        <div class="text-center mb-16">
+            <h2 class="text-ncl-blue code-font mb-4 tracking-widest uppercase text-sm font-bold">Competency Framework</h2>
+            <h3 class="text-3xl font-black text-gray-900 mb-4">The Nine Domains of Excellence</h3>
+            <p class="text-gray-500 max-w-2xl mx-auto">Directly mapped to the NICE Cybersecurity Workforce Framework.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-ncl-blue">
+                <h4 class="text-xl font-bold mb-3 text-gray-900">Open Source Intelligence</h4>
+                <p class="text-gray-500 text-sm">Track targets, uncover hidden infrastructure, and gather actionable intelligence from public data.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-emerald-500">
+                <h4 class="text-xl font-bold mb-3 text-gray-900">Cryptography</h4>
+                <p class="text-gray-500 text-sm">Decode the complex. Identify encryption techniques, break ciphers, and extract secrets.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-purple-500">
+                <h4 class="text-xl font-bold mb-3 text-gray-900">Log Analysis</h4>
+                <p class="text-gray-500 text-sm">Detect malicious patterns in system logs to stop breaches before they spiral.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-blue-400">
+                <h4 class="text-xl font-bold mb-3 text-gray-900">Network Analysis</h4>
+                <p class="text-gray-500 text-sm">Analyze packet captures (PCAPs) to identify malicious traffic and map target topology.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-rose-500">
+                <h4 class="text-xl font-bold mb-3 text-gray-900">Forensics</h4>
+                <p class="text-gray-500 text-sm">Perform post-mortem analysis of disk images to recover files and reconstruct timelines.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-orange-400">
+                <h4 class="text-xl font-bold mb-3 text-gray-900">Scanning & Recon</h4>
+                <p class="text-gray-500 text-sm">Identify live hosts, open ports, and vulnerable services across target networks.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-yellow-500">
+                <h4 class="text-xl font-bold mb-3 text-gray-900">Password Cracking</h4>
+                <p class="text-gray-500 text-sm">Recover plaintext passwords from hashes using dictionaries and rulesets.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-indigo-500">
+                <h4 class="text-xl font-bold mb-3 text-gray-900">Web Exploitation</h4>
+                <p class="text-gray-500 text-sm">Identify and exploit vulnerabilities in web applications like SQLi and XSS.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl card-shadow border-l-4 border-cyan-500">
+                <h4 class="text-xl font-bold mb-3 text-gray-900">Enumeration</h4>
+                <p class="text-gray-500 text-sm">Systematically gather info on target systems (users, groups) to identify entry points.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-ncl-navy py-12 text-center text-gray-400 text-sm border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2026 National Cyber League (NCL). All Trademarks Reserved.</p>
+            <p class="mt-2 font-bold text-ncl-blue">Ethics First. Always Learning. Relevant Education. Sense of Belonging.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Scouting Report Modal -->
+    <div id="report-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center hidden z-[100] p-6 overflow-y-auto">
+        <div class="bg-white p-8 md:p-12 rounded-2xl max-w-2xl w-full relative animate-fadeIn shadow-2xl">
+            <button onclick="toggleModal('report-modal')" class="absolute top-6 right-6 text-gray-400 hover:text-gray-900 text-2xl">&times;</button>
+            <div class="flex items-center space-x-3 mb-4">
+                <img src="logo.png" alt="NCL Logo" class="h-10 w-auto" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div class=\'w-10 h-10 bg-ncl-blue rounded flex items-center justify-center\'><span class=\'text-white font-black text-xs\'>NCL</span></div>');">
+                <h3 class="text-2xl font-black text-gray-900">The NCL Scouting Report</h3>
+            </div>
+            <p class="text-ncl-blue text-xs mb-8 code-font font-bold tracking-widest uppercase">Competency Validation Summary</p>
+            
+            <div class="space-y-6">
+                <p class="text-gray-600 text-sm leading-relaxed">A standard-setting document provided to every player, mapping their performance to the <strong>NICE Cybersecurity Workforce Framework</strong>. It eliminates the "resume gap" for students from all academic backgrounds.</p>
+                
+                <div class="bg-gray-50 border border-gray-100 rounded-xl p-6 shadow-inner">
+                    <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
+                        <div>
+                            <span class="text-[10px] text-gray-400 uppercase font-extrabold tracking-widest block mb-1">Candidate Profile</span>
+                            <span class="text-xl font-extrabold text-gray-900">Jordan Smith</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] text-gray-400 uppercase font-extrabold tracking-widest block mb-1">Global Standing</span>
+                            <span class="text-xl font-extrabold text-ncl-blue">Top 10%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-700">OSINT</span>
+                            <div class="w-2/3 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="w-[95%] h-full bg-ncl-blue"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-700">Cryptography</span>
+                            <div class="w-2/3 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="w-[82%] h-full bg-emerald-500"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-gray-700">Log Analysis</span>
+                            <div class="w-2/3 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                <div class="w-[88%] h-full bg-ncl-blue"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <h4 class="text-xs font-black text-ncl-blue uppercase mb-2">For Students</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">Provide direct evidence of your skills to employers during application and interview processes.</p>
+                    </div>
+                    <div class="p-4 bg-emerald-50 rounded-lg">
+                        <h4 class="text-xs font-black text-emerald-700 uppercase mb-2">For Recruiters</h4>
+                        <p class="text-xs text-gray-600 leading-relaxed">Obtain objective, performance-based data on a candidate's readiness for cyber roles.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="toggleModal('report-modal')" class="w-full bg-ncl-blue mt-10 p-4 rounded text-white font-bold uppercase tracking-widest transition">Close Summary</button>
+        </div>
+    </div>
+
+    <script>
+        const content = {
+            history: `
+                <div class="grid md:grid-cols-2 gap-12 items-center animate-fadeIn px-4">
+                    <div>
+                        <h3 class="text-3xl font-black text-gray-900 mb-6">Origins of NCL</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">Founded in 2011, the National Cyber League was born from the vision of cybersecurity academics and public agency leaders who wanted a standardized, low-barrier entry point for students.</p>
+                        <p class="text-gray-600 mb-4 leading-relaxed">Today, NCL reaches 17,000+ annual players. The 2015 partnership with <span class="text-ncl-blue font-bold">Cyber Skyline</span> transformed the experience into a scalable, high-fidelity cloud platform used by 500+ institutions.</p>
+                        <div class="mt-8 p-6 bg-blue-50 border-l-4 border-ncl-blue text-ncl-blue italic font-medium">
+                            "We wanted a much better on-ramp for students to get into cybersecurity—one focused on inclusiveness and accessibility."
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200">
+                        <h4 class="font-bold text-gray-900 mb-6 uppercase text-xs tracking-widest">Growth Timeline</h4>
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-4">
+                                <span class="text-ncl-blue font-black text-2xl">2011</span>
+                                <span class="text-gray-500 font-medium">Alliance of Public Agencies Founders NCL</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="text-ncl-blue font-black text-2xl">2015</span>
+                                <span class="text-gray-500 font-medium">Strategic Cloud Integration with Cyber Skyline</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="text-ncl-blue font-black text-2xl">2026</span>
+                                <span class="text-gray-500 font-medium">Strategic Vision: HS & Industry Pipelines</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            mission: `
+                <div class="text-center max-w-5xl mx-auto animate-fadeIn px-4">
+                    <h3 class="text-3xl font-black text-gray-900 mb-8 uppercase tracking-tight">The North Star Pillars</h3>
+                    <p class="text-gray-600 mb-12 text-lg">Mission: To grow and engage the cybersecurity workforce through accessible competitions and meaningful partnerships.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 text-left">
+                        <div class="p-8 bg-white card-shadow rounded-xl border-t-4 border-ncl-blue">
+                            <h4 class="text-xl font-black text-gray-900 mb-3">Ethics First</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Integrity is the bedrock of the profession. We ensure every participant understands the moral and legal responsibilities of the technical skills they develop.</p>
+                        </div>
+                        <div class="p-8 bg-white card-shadow rounded-xl border-t-4 border-ncl-blue">
+                            <h4 class="text-xl font-black text-gray-900 mb-3">Always Learning</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">The threat landscape moves fast. We foster a culture of lifelong curiosity, providing the Gym and Practice games as year-round training grounds.</p>
+                        </div>
+                        <div class="p-8 bg-white card-shadow rounded-xl border-t-4 border-ncl-blue">
+                            <h4 class="text-xl font-black text-gray-900 mb-3">Relevant Education</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Every challenge is mapped to NICE/NIST frameworks and CompTIA certifications, ensuring educational content aligns with employer demands.</p>
+                        </div>
+                        <div class="p-8 bg-white card-shadow rounded-xl border-t-4 border-ncl-blue">
+                            <h4 class="text-xl font-black text-gray-900 mb-3">Sense of Belonging</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">Cybersecurity needs diverse voices. We create an inclusive environment where students from all backgrounds feel empowered to succeed.</p>
+                        </div>
+                    </div>
+                </div>
+            `,
+            success: `
+                <div class="grid md:grid-cols-2 gap-10 animate-fadeIn px-4">
+                    <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm">
+                        <p class="text-gray-700 italic mb-8 leading-relaxed">"When I see NCL on a student's resume, I automatically know that student has a passion for the industry and real-life skills developed through the competition."</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-ncl-blue rounded-full flex items-center justify-center text-white font-bold">AS</div>
+                            <div>
+                                <div class="font-bold text-gray-900">Anna Schuh</div>
+                                <div class="text-xs text-gray-500">University Recruiter, CrowdStrike</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm">
+                        <p class="text-gray-700 italic mb-8 leading-relaxed">"NCL gave my students a newfound sense of confidence that they didn't have before they walked into their professional interviews."</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-ncl-blue rounded-full flex items-center justify-center text-white font-bold">NC</div>
+                            <div>
+                                <div class="font-bold text-gray-900">NCL Coach</div>
+                                <div class="text-xs text-gray-500">Strategic Focus Group Insight</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        };
+
+        function switchTab(tabId) {
+            document.querySelectorAll('#tabs button').forEach(btn => btn.classList.remove('tab-active'));
+            document.getElementById(`tab-${tabId}`).classList.add('tab-active');
+            document.getElementById('content-area').innerHTML = content[tabId];
+        }
+
+        function toggleModal(id) {
+            document.getElementById(id).classList.toggle('hidden');
+        }
+
+        window.onload = () => switchTab('history');
+    </script>
+</body>
+</html>
