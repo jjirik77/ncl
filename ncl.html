@@ -13,6 +13,10 @@
             --ncl-dark-navy: #0a1a2f;
             --ncl-accent-green: #00a651;
         }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 180px; /* Increased offset for the larger centered nav */
+        }
         body {
             background-color: #ffffff;
             color: #334155;
@@ -65,20 +69,25 @@
 </head>
 <body class="antialiased">
 
-    <!-- Header / Nav -->
-    <nav class="bg-white p-4 md:p-6 flex justify-between items-center border-b border-gray-100 sticky top-0 z-50 shadow-sm">
-        <div class="flex items-center">
-            <!-- Logo Placeholder -->
-            <img src="logo.png" alt="NCL Logo" class="h-12 w-auto" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div class=\'w-10 h-10 bg-ncl-blue rounded flex items-center justify-center\'><span class=\'text-white font-black text-xs\'>NCL</span></div>');">
+    <!-- Header / Nav (Enhanced & Centered Logo) -->
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm py-4">
+        <div class="container mx-auto px-6 flex flex-col items-center">
+            <!-- Doubled Logo centered -->
+            <div class="mb-4">
+                <img src="logo.png" alt="NCL Logo" class="h-20 md:h-24 w-auto object-contain" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<div class=\'w-16 h-16 bg-ncl-blue rounded flex items-center justify-center text-white font-black text-xl\'>NCL</div>');">
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-between w-full border-t border-gray-50 pt-4">
+                <div class="flex space-x-6 md:space-x-12 text-xs md:text-sm uppercase tracking-widest font-bold text-gray-600 mb-4 md:mb-0">
+                    <a href="#history-module" class="hover:text-ncl-blue transition">Origins</a>
+                    <a href="#strategy" class="hover:text-ncl-blue transition">2026-2029 Vision</a>
+                    <a href="#impact" class="hover:text-ncl-blue transition">Impact</a>
+                </div>
+                <a href="https://cyberskyline.com/events/ncl" target="_blank" class="btn-primary px-8 py-3 rounded-full text-xs font-bold uppercase transition shadow-lg shadow-blue-500/20">
+                    Join the Season
+                </a>
+            </div>
         </div>
-        <div class="hidden lg:flex space-x-8 text-xs uppercase tracking-widest font-bold text-gray-600">
-            <a href="#history" class="hover:text-ncl-blue transition">Origins</a>
-            <a href="#strategy" class="hover:text-ncl-blue transition">2026-2029 Vision</a>
-            <a href="#stats" class="hover:text-ncl-blue transition">Impact</a>
-        </div>
-        <a href="https://cyberskyline.com/events/ncl" target="_blank" class="btn-primary px-6 py-2.5 rounded text-xs font-bold uppercase transition">
-            Join the Season
-        </a>
     </nav>
 
     <!-- Hero Section -->
@@ -99,8 +108,8 @@
         </div>
     </header>
 
-    <!-- Interactive Tabs Section -->
-    <section class="container mx-auto px-6 py-16" id="tabs">
+    <!-- Interactive Tabs Section (Origins) -->
+    <section class="container mx-auto px-6 py-16" id="history-module">
         <div class="flex justify-center border-b border-gray-200 mb-12 overflow-x-auto">
             <button onclick="switchTab('history')" id="tab-history" class="px-8 py-4 text-sm font-bold uppercase tracking-widest transition tab-active">History</button>
             <button onclick="switchTab('mission')" id="tab-mission" class="px-8 py-4 text-sm font-bold uppercase tracking-widest transition">Mission & Values</button>
@@ -181,30 +190,34 @@
         </div>
     </section>
 
-    <!-- Stats Ticker -->
-    <section class="bg-ncl-navy py-16" id="stats">
+    <!-- Impact Section (Swapped with Stats) -->
+    <section class="bg-ncl-navy py-24" id="impact">
+        <div class="container mx-auto px-6 text-center mb-12">
+            <h2 class="text-blue-300 code-font mb-4 tracking-widest uppercase text-sm font-bold">Market Impact</h2>
+            <h3 class="text-3xl font-black text-white mb-4">Driving National Excellence</h3>
+        </div>
         <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-                <div class="text-4xl font-black text-white mb-2">17,000+</div>
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">17,000+</div>
                 <div class="text-xs uppercase tracking-widest text-blue-300 font-bold">Annual Players</div>
             </div>
             <div>
-                <div class="text-4xl font-black text-white mb-2">500+</div>
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">500+</div>
                 <div class="text-xs uppercase tracking-widest text-blue-300 font-bold">Institutions</div>
             </div>
             <div>
-                <div class="text-4xl font-black text-white mb-2">9</div>
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">9</div>
                 <div class="text-xs uppercase tracking-widest text-blue-300 font-bold">NICE Domains</div>
             </div>
             <div>
-                <div class="text-4xl font-black text-white mb-2">100%</div>
+                <div class="text-4xl md:text-5xl font-black text-white mb-2">100%</div>
                 <div class="text-xs uppercase tracking-widest text-blue-300 font-bold">Virtual Access</div>
             </div>
         </div>
     </section>
 
     <!-- Competency Domains -->
-    <section class="container mx-auto px-6 py-24">
+    <section class="container mx-auto px-6 py-24" id="domains">
         <div class="text-center mb-16">
             <h2 class="text-ncl-blue code-font mb-4 tracking-widest uppercase text-sm font-bold">Competency Framework</h2>
             <h3 class="text-3xl font-black text-gray-900 mb-4">The Nine Domains of Excellence</h3>
@@ -406,7 +419,7 @@
         };
 
         function switchTab(tabId) {
-            document.querySelectorAll('#tabs button').forEach(btn => btn.classList.remove('tab-active'));
+            document.querySelectorAll('#history-module button').forEach(btn => btn.classList.remove('tab-active'));
             document.getElementById(`tab-${tabId}`).classList.add('tab-active');
             document.getElementById('content-area').innerHTML = content[tabId];
         }
